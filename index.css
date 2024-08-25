@@ -31,7 +31,7 @@
 }
 
 .res-card{
-  height: 400px;
+  height: 450px;
   padding: 5px;
   border-radius: 3px;
   cursor: pointer;
@@ -49,10 +49,9 @@
 
 .res-container{
   display: grid;
-  grid-template-columns: repeat(5,250px);
+  grid-template-columns: repeat(5,280px);
   row-gap: 10px;
   column-gap: 30px;
-  justify-content: center;
   margin-top: 10px;
 }
 
@@ -73,18 +72,18 @@
   align-items: center;
   gap: 30px;
   margin-top: 76px;
-  justify-content: center;
+  
 }
 
 
 .Shimmer-card{
   margin-top: 10px;
-  width: 250px;
+  width: 280px;
 }
 
 
 .Shimmer-image{
-  width: 250px;
+  width: 280px;
   height:200px;
   background-color: lightgrey;
 }

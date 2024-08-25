@@ -18,3 +18,10 @@
 # fetching data from backend using API by fetch function which was provide by JSEngine in browser. when we fetch the data in "network tab" and loading in our localHost then we got some error called "CROS" it standard for "Cross-Origin-Resource Sharing", why we are getting these error, because "the browser is not allowing us to access the API due to mismatching of localHost origin and backend origin", to slow this conflicts or issue we can use extension called cros chrome extension.
 
 # Shimmer UI-> A shimmer UI is a version of the UI that doesn’t contain actual content, but instead mimics the layout and shapes of the content that will eventually appear. It uses a gradient animation that creates a shimmering effect over the placeholders, giving the user a sense of motion and progress.
+
+
+# Routing -> nav to one component page to another component page and we have to install react-router-dom, this is a library which have Routing function to create router in our app. 
+-> this routing function are commonly using to create routing and config in our app.
+  ->createBrowserRouter -> to create router and we have to give some information to config the router like path.
+  ->RouterProvider -> it will render all the path which is inside in the createBrowserRouter([...]);
+  ->useRouteError -> it is a function(hook) and provide by react-router-dom library, through we can display more info about the error and we can config/create our own error page/component, when they are nav to some other page which is not in the app. 

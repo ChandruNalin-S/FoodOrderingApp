@@ -6,7 +6,7 @@ const RestaurantCard = (props)=>{ {/* props is a object, which is stored the arg
   //console.log(props);
   //const {resName,cuisine} =props;// this shortcut is called destructing the object using javascript.
   const {resData} =  props;
-  const {cloudinaryImageId,name,cuisines,avgRating} = resData?.info;// destructing and "?" it denotes that optional chaining. 
+  const {cloudinaryImageId,name,cuisines,avgRating,costForTwo} = resData?.info;// destructing and "?" it denotes that optional chaining. 
 
   const {deliveryTime} = resData?.info.sla;
   return (
@@ -14,6 +14,7 @@ const RestaurantCard = (props)=>{ {/* props is a object, which is stored the arg
       <img className="food-image" alt="meghana Foods" src={CDN_URL+cloudinaryImageId}/>
       <h3>{name}</h3>
       <h4>{cuisines.join(", ")}</h4>
+      <h4>{costForTwo}</h4>
       <h4>{avgRating} stars</h4>
       <h4>{deliveryTime} mintues</h4>
     </div>
