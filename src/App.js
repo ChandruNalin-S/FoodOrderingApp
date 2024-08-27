@@ -5,7 +5,8 @@ import Body from "./components/Body";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error"; 
-import { createBrowserRouter , RouterProvider } from "react-router-dom";
+import RestaurantMenu from "./components/RestaurantMenu";
+import { createBrowserRouter , RouterProvider ,Outlet } from "react-router-dom";
 /*
 component -> to build this site
 Header
@@ -51,7 +52,7 @@ const AppLayout = ()=>{
   return (
     <div className="app">
       <Header />
-      <Body />
+      <Outlet />{/* Outlet is a component which is provided by react-router-dom, through this we can nav to children route, whenever we give a path, it will automatically understand and move to different children route */}
     </div>
   )
 };
@@ -60,16 +61,24 @@ const appRouter = createBrowserRouter([
   {
     path:"/",
     element:<AppLayout />,
-    errorElement:<Error />
-  },
-  {
-    path:"/About",
-    element:<About />,
-    errorElement:<Error />
-  },
-  {
-    path:"/Contact",
-    element:<Contact />,
+    children:[
+      {
+        path:"/",
+        element:<Body />
+      },
+      {
+        path:"/About",
+        element:<About />
+      },
+      {
+        path:"/Contact",
+        element:<Contact />
+      },
+      {
+        path:"/restaurants/:resId",
+        element:<RestaurantMenu />
+      }
+    ],
     errorElement:<Error />
   }
 ])

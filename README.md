@@ -25,3 +25,8 @@
   ->createBrowserRouter -> to create router and we have to give some information to config the router like path.
   ->RouterProvider -> it will render all the path which is inside in the createBrowserRouter([...]);
   ->useRouteError -> it is a function(hook) and provide by react-router-dom library, through we can display more info about the error and we can config/create our own error page/component, when they are nav to some other page which is not in the app. 
+
+
+# 2 types of routing:
+  -> client side routing. -> it is a single page application and replacing the component and not reloading the entire page.
+  -> server side routing. -> it is traditional routing, why because, whenever we click the home page or about page, the network call will occur and get the data of clicked page like home.html or about.html from server.  

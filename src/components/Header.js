@@ -1,5 +1,6 @@
 import { useState , useEffect } from "react";
 import { LOG_URL } from "../utils/constants";
+import { Link} from "react-router-dom";// Link is a component provided by react-router-dom, purpose to link instead of <a></a>, because this link component won't reload the page, when move to another page or component and it is very fast render the page.
 
 
 const Header = ()=>{
@@ -23,9 +24,15 @@ const Header = ()=>{
       </div>
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
+          <li>
+            <Link to="/">home</Link>
+          </li>
+          <li>
+            <Link to="/about">About Us</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact Us</Link>
+          </li>
           <li>Cart</li>
           <li>
             <button className="button" onClick={()=>{

@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 
 
@@ -73,7 +74,7 @@ const Body = ()=>{
         {// javascript only written in inside the curly bracket
 
         FilterRestaurants.map((restaurant)=>{
-          return <RestaurantCard key={restaurant.info.id} resData = {restaurant} />// whenever we looping array object,then we have to pass unique key props. 
+          return <Link key={restaurant.info.id}  to={"/restaurants/"+restaurant.info.id}><RestaurantCard  resData = {restaurant} /></Link>// whenever we looping array object,then we have to pass unique key props and why we put key inside the Link component not in RestaurantCard component, because now RestaurantCard component inside the Link component so it is parent component on top of it, that's why key is inside the Link component.
         })
 
         }
