@@ -25,13 +25,13 @@ const Header = ()=>{
       <div className="nav-items">
         <ul>
           <li>
-            <Link to="/">home</Link>
+            <Link className="nav-items-link" to="/">home</Link>
           </li>
           <li>
-            <Link to="/about">About Us</Link>
+            <Link className="nav-items-link" to="/about">About Us</Link>
           </li>
           <li>
-            <Link to="/contact">Contact Us</Link>
+            <Link className="nav-items-link" to="/contact">Contact Us</Link>
           </li>
           <li>Cart</li>
           <li>

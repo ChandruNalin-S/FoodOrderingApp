@@ -19,8 +19,17 @@ const Body = ()=>{
 
 
   useEffect(()=>{// it always take two parameter one is function to execute and another one is destructing.
+    
+    timer = setInterval(()=>{// for checking like, the useEffect() is running after moving to another page.it will running, to stop have to return some function to stop.
+      console.log("the useEffect is running");
+    },1000);
+
     fetchData();
-  },[]);
+
+    return ()=>{
+      clearInterval(timer);
+    }
+  },[]);// in dependency array we can pass more state variable and even one state variable is also update then useeffect is called.
 
   const fetchData = async ()=>{
     const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.0843007&lng=80.2704622&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
@@ -74,7 +83,7 @@ const Body = ()=>{
         {// javascript only written in inside the curly bracket
 
         FilterRestaurants.map((restaurant)=>{
-          return <Link key={restaurant.info.id}  to={"/restaurants/"+restaurant.info.id}><RestaurantCard  resData = {restaurant} /></Link>// whenever we looping array object,then we have to pass unique key props and why we put key inside the Link component not in RestaurantCard component, because now RestaurantCard component inside the Link component so it is parent component on top of it, that's why key is inside the Link component.
+          return <Link className="res-details-container-link" key={restaurant.info.id}  to={"/restaurants/"+restaurant.info.id}><RestaurantCard  resData = {restaurant} /></Link>// whenever we looping array object,then we have to pass unique key props and why we put key inside the Link component not in RestaurantCard component, because now RestaurantCard component inside the Link component so it is parent component on top of it, that's why key is inside the Link component.
         })
 
         }
@@ -83,6 +92,5 @@ const Body = ()=>{
     </div>
   )
 };
-
 
 export default Body;

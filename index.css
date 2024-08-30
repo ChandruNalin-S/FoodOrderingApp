@@ -21,6 +21,11 @@
   list-style-type: none;
 }
 
+.nav-items-link{
+  text-decoration: none;
+  color: black;
+}
+
 .button{
   padding: 20px;
 }
@@ -39,6 +44,11 @@
 
 .res-card:hover{
   border: 1px solid black;
+}
+
+.res-details-container-link{
+  text-decoration: none;
+  color: black;
 }
 
 .food-image{

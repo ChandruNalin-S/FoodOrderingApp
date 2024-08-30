@@ -30,3 +30,53 @@
 # 2 types of routing:
   -> client side routing. -> it is a single page application and replacing the component and not reloading the entire page.
   -> server side routing. -> it is traditional routing, why because, whenever we click the home page or about page, the network call will occur and get the data of clicked page like home.html or about.html from server.  
+
+
+
+# <button onClick={()=>{
+          // NEVER EVER DO UPDATE STATE VARIABLE DIRECTLY likr this->this.state.count = this.state.count + 1(this one is wrong way to update state variable lik this and will cause consistency in data); 
+
+          this.setState({// setState function we can use any where inside the class based component. through this function we can update the count.
+            count:this.state.count + 1
+          })
+          
+        }>Count Increase</button>
+
+# Important:" React Life Cycle methods in class based component:
+  -> there are two phase in react life cycle in class based component:
+      (mounting)/loading
+      -> Render Phase
+              -> constructor
+              -> render
+      -> Commit Phase
+              -> Dom manipulation after render the component and reconciliation, find out the different btw previse virtual dom and new virtual dom, compare the dom and then updated the dom in website.
+              ->componentDidMount()-> this function will ensure that component is loaded/mount in the website.
+              if the state variable is update then it will render again and call the function called componentDidUpdate();
+              ->componentDidUpdate()-> this function will ensure that component is updated in the website.
+              ->componentWillUnMount()->  this function will stop/clear the component componentDidMount, if u are moving another page, why because if u not stop/clear then it will run background, so we have to clear the mess.(due to this is single page application)but (server based application)it won't happen/occur this mess because the page is reloading.
+
+# note:"In react life cycle envirnoment"
+
+ -> react always batch the render phase first and batch the commit phase.
+ for example: In about component is a parent component and there are three child component is called.
+ -> First, batch all render phase in each and every component and then, batch all commit phase in each and every component after updated in dom and call the componentDidMount()-> for the component is loaded.        
+  
+ In console how the component is working:
+
+ ->Parent constructor
+ ->Parent render
+      (Render Phase- batch all render phase->constructor and render function)
+      ->first (class)child constructor
+      ->first(class)child render
+      ->second(class)child constructor
+      ->second (class)child render
+      ->third (class)child constructor
+      ->third (class)child render
+
+      (Commit Phase- after render phase, the dom is updated and call the componentDidMount())
+      ->first (class)child did mount
+      ->second (class)child did mount
+      ->third (class)child did mount
+->Parent did mount
+
+# Never ever compare react life cycle methods to functional component.
