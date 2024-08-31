@@ -1,41 +1,25 @@
 import {useState , useEffect } from "react";
 import Shimmer from "./Shimmer";
 import {useParams} from "react-router-dom";
-import { MENU_API } from "../utils/constants";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
+
 
 
 const RestaurantMenu  = ()=>{
 
-  const [ResInfo, setResInfo] = useState(null);
-
-
   const {resId} = useParams();// it is function/component, purpose:"get the id from the URL as a object and put inside the resId property".
 
+  const resInfo = useRestaurantMenu(resId);// this function is called a custom hook which means we can create our oun hook to make our component manageable.
 
-  useEffect(()=>{
-    fetchMenu();
-  },[]);
-
-
-  const fetchMenu = async ()=>{
-    const data = await fetch(MENU_API+resId);
-
-    const json = await data.json();
-
-    console.log(json);
-
-    setResInfo(json?.data);
-  }
-
-  if (!ResInfo) {
+  if (!resInfo) {
   return <Shimmer />;  // Display a fallback UI or loading indicator if the structure is not available
 }
 
   console.log("condition is success");
 
   // If all checks pass, destructure the necessary properties
-  const { name, cuisines, costForTwoMessage } = ResInfo.cards[2].card.card.info;
-  const { itemCards } =ResInfo.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card;
+  const { name, cuisines, costForTwoMessage } = resInfo.cards[2].card.card.info;
+  const { itemCards } =resInfo.cards[4].groupedCard.cardGroupMap.REGULAR.cards[2].card.card;
   
   //console.log(itemCards[0].card.info.name);
 

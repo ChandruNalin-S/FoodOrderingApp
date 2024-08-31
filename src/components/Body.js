@@ -2,7 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 
 
@@ -17,6 +17,8 @@ const Body = ()=>{
 
   const[searchText,setSearchText] = useState("");
 
+  const Status = useOnlineStatus();
+
 
   useEffect(()=>{// it always take two parameter one is function to execute and another one is destructing.
     
@@ -24,7 +26,13 @@ const Body = ()=>{
       console.log("the useEffect is running");
     },1000);
 
-    fetchData();
+  
+    if(Status=== true){
+      fetchData();
+    }
+    else{
+      return <h1>your connection is poor</h1>
+    }
 
     return ()=>{
       clearInterval(timer);
@@ -32,6 +40,7 @@ const Body = ()=>{
   },[]);// in dependency array we can pass more state variable and even one state variable is also update then useeffect is called.
 
   const fetchData = async ()=>{
+
     const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.0843007&lng=80.2704622&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
 
     const json = await data.json();
@@ -44,7 +53,7 @@ const Body = ()=>{
   }
 
 
-  
+
   /*
   if(ListOfRestaurants.length === 0){
     return <Shimmer/>

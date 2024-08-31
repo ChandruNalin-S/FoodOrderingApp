@@ -1,12 +1,13 @@
-import React from "react";
+import React,{lazy, Suspense} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
-import About from "./components/About";
+//import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error"; 
 import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter , RouterProvider ,Outlet } from "react-router-dom";
+//import Grocery from "./components/Grocery";
 /*
 component -> to build this site
 Header
@@ -44,6 +45,11 @@ note: not using keys(not acceptable) <<<<< index as key <<<< unique id (best pra
 
 */
 
+const Grocery = lazy(()=>// lazy is function is used to load our component based on the demand like when user like Grocery nav then the component on to the site and lazy split the component, so the component is not inside in the normal js, it will new js file to the browser. the function come from React library.this function never have opening"{" and closing "}".
+  import("./components/Grocery")
+);
+
+const About = lazy(()=> import("./components/About"));
 
 
 
@@ -68,11 +74,15 @@ const appRouter = createBrowserRouter([
       },
       {
         path:"/About",
-        element:<About />
+        element:<Suspense fallback={<h1>The About is loading</h1>}><About /></Suspense>
       },
       {
         path:"/Contact",
         element:<Contact />
+      },
+      {
+        path:"/Grocery",
+        element:<Suspense fallback={<h1>loading...</h1>}><Grocery /></Suspense>// the lazy component must inside suspense component. Suspense component help you to load the component fast so only the component jsx will be display. 
       },
       {
         path:"/restaurants/:resId",

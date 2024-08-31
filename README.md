@@ -80,3 +80,14 @@
 ->Parent did mount
 
 # Never ever compare react life cycle methods to functional component.
+
+# while developing large scale application, there are many component inside the single js file and file size is huge so web browser cannot load properly and not optimize your website. so make your app optimize and large scale then we have to split our code.
+ there are different way to call managing
+-> Chunking
+-> Code splitting
+-> Dynamic Bundling
+-> Lazy Loading
+-> on demand loading
+-> dynamic import
+
+# to reduce size of the file we are splitting file by a component using lazy function and it present in react library.
