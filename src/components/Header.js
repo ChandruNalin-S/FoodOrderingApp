@@ -18,25 +18,25 @@ const Header = ()=>{
   },[btnNameReact]);
 
   return (
-    <div className="header">
+    <div className="flex justify-between bg-pink-100 shadow-lg py-2 items-center sm:bg-lime-300 lg:bg-blue-300">
       <div className="logo-container">
-        <img className="logo" src={LOG_URL}></img>
+        <img className="w-40" src={LOG_URL}></img>
       </div>
       <div className="nav-items">
-        <ul>
-          <li>
+        <ul className="flex m-4 py-2">
+          <li className="px-4">
             <Link className="nav-items-link" to="/">home</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link className="nav-items-link" to="/about">About Us</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link className="nav-items-link" to="/contact">Contact Us</Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link className="nav-items-link" to="/Grocery">Grocery</Link>
           </li>
-          <li>Cart</li>
+          <li className="px-4">Cart</li>
           <li>
             <button className="button" onClick={()=>{
               btnNameReact === "login"? SetbtnNameReact("logout"): SetbtnNameReact("login");

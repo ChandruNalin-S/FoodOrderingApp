@@ -62,12 +62,12 @@ const Body = ()=>{
 
   return ListOfRestaurants.length === 0? <Shimmer />: (// this line is known as ternary operatorin javascript.
     <div className="body-container">
-      <div className="top-rating-container">
+      <div className="top-rating-container flex m-5">
         <div>
-          <input text="text" className="filter-res" value={searchText} onChange={(e)=>{
+          <input text="text" className="border border-solid border-black mr-2 py-1 px-1 " value={searchText} onChange={(e)=>{
               setSearchText(e.target.value);
           }}/>
-          <button onClick={()=>{
+          <button className="bg-red-500 text-white px-3 py-1 mr-2 rounded-lg" onClick={()=>{
             const FilterSearchRestaurants = ListOfRestaurants.filter((res)=>{
               return res.info.name.toLowerCase().includes(searchText.toLowerCase());
             });
@@ -79,7 +79,7 @@ const Body = ()=>{
         </div>
 
 
-        <button className="Top-rating" onClick={()=>{
+        <button className="bg-black text-white px-2 rounded-lg" onClick={()=>{
            const FilterRestaurants = ListOfRestaurants.filter((res)=>{
               return res.info.avgRating > 4;
           });
@@ -88,7 +88,7 @@ const Body = ()=>{
 
         }}>Top Rating</button>
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap">
         {// javascript only written in inside the curly bracket
 
         FilterRestaurants.map((restaurant)=>{

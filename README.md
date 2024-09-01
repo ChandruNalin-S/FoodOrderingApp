@@ -91,3 +91,14 @@
 -> dynamic import
 
 # to reduce size of the file we are splitting file by a component using lazy function and it present in react library.
+
+
+# style/design website by
+->Normal css
+->styled component
+->bootstrap
+->ant design
+->sass, scss
+->material UI
+->chakra UI
+->tailwind css
