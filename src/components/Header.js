@@ -1,6 +1,7 @@
-import { useState , useEffect } from "react";
+import { useState , useEffect, useContext } from "react";
 import { LOG_URL } from "../utils/constants";
 import { Link} from "react-router-dom";// Link is a component provided by react-router-dom, purpose to link instead of <a></a>, because this link component won't reload the page, when move to another page or component and it is very fast render the page.
+import UserContext from "./UserContext";
 
 
 const Header = ()=>{
@@ -8,6 +9,8 @@ const Header = ()=>{
   const [btnNameReact,SetbtnNameReact] = useState("login");
 
   console.log("header-render");
+
+  const {loggedUser} = useContext(UserContext);// to use the Context we can use the useContext hook to get the data which is inside the CreateContext.
 
 
   // if no dependency array => useEffect is called on every render.
@@ -42,6 +45,7 @@ const Header = ()=>{
               btnNameReact === "login"? SetbtnNameReact("logout"): SetbtnNameReact("login");
             }}>{btnNameReact}</button>
           </li>
+          <li className="px-4 text-lg font-bold items-center cursor-pointer">{loggedUser}</li>
         </ul>
       </div>
     </div>

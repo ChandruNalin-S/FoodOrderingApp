@@ -1,4 +1,4 @@
-import React,{lazy, Suspense} from "react";
+import React,{lazy, Suspense,useState,useEffect} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -7,6 +7,7 @@ import Contact from "./components/Contact";
 import Error from "./components/Error"; 
 import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter , RouterProvider ,Outlet } from "react-router-dom";
+import UserContext from "./components/UserContext";
 //import Grocery from "./components/Grocery";
 /*
 component -> to build this site
@@ -52,14 +53,25 @@ const Grocery = lazy(()=>// lazy is function is used to load our component based
 const About = lazy(()=> import("./components/About"));
 
 
-
 // the below is a component compositons
 const AppLayout = ()=>{
+  const [userName,setUserName] = useState();
+
+  useEffect(()=>{
+    const data = {
+      name:"Chandru S",
+    }
+    setUserName(data.name);
+  },[]);
+
+
   return (
-    <div className="app">
-      <Header />
-      <Outlet />{/* Outlet is a component which is provided by react-router-dom, through this we can nav to children route, whenever we give a path, it will automatically understand and move to different children route */}
-    </div>
+    <UserContext.Provider value={{loggedUser:userName,setUserName}}>{/*UserContext.Provider is a component and provide context to everywhere in the application, when the context is called.*/}
+      <div className="app">
+        <Header />
+        <Outlet />{/* Outlet is a component which is provided by react-router-dom, through this we can nav to children route, whenever we give a path, it will automatically understand and move to different children route */}
+      </div>
+    </UserContext.Provider>
   )
 };
 

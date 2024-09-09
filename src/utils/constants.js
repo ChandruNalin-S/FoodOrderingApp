@@ -4,6 +4,8 @@ export const LOG_URL  = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ
 
 export const MENU_API = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=13.0843007&lng=80.2704622&restaurantId=";
 
+export const DOWN_ARROW_URL = "https://cdn-icons-png.flaticon.com/512/54/54785.png";
+
 
 /*
 Note:

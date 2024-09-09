@@ -35,12 +35,12 @@ class UserClass extends React.Component{
   }
 
   componentDidUpdate(){
-    console.log("the component is updated in website");
+    //console.log("the component is updated in website");
   }
 
   componentWillUnmount(){
     clearInterval(this.timer);
-    console.log("the component is unmounted from website");
+    //console.log("the component is unmounted from website");
   }
 
 

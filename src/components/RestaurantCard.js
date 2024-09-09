@@ -1,5 +1,6 @@
+import { useContext } from "react";
 import { CDN_URL } from "../utils/constants";
-
+import UserContext from "./UserContext";
 
 
 const RestaurantCard = (props)=>{ {/* props is a object, which is stored the argument come from function call like RestaurantCard inside the Body component*/}
@@ -7,6 +8,9 @@ const RestaurantCard = (props)=>{ {/* props is a object, which is stored the arg
   //const {resName,cuisine} =props;// this shortcut is called destructing the object using javascript.
   const {resData} =  props;
   const {cloudinaryImageId,name,cuisines,avgRating,costForTwo} = resData?.info;// destructing and "?" it denotes that optional chaining. 
+
+  const {loggedUser} = useContext(UserContext);
+
 
   const {deliveryTime} = resData?.info.sla;
   return (
@@ -17,8 +21,40 @@ const RestaurantCard = (props)=>{ {/* props is a object, which is stored the arg
       <h4>{costForTwo}</h4>
       <h4>{avgRating} stars</h4>
       <h4>{deliveryTime} mintues</h4>
+      <h4 className="font-bold">{loggedUser}</h4>
     </div>
   )
 };
+
+
+
+// this is called a higher order component, it get a input component, enhance the component/function and return as component.
+export const displayOfferLabel = (RestaurantCard) => {
+  return (props) => {
+    // Destructure info from props
+    //console.log(props.resData.info)
+    const { resData } = props;
+
+    //console.log(info);
+
+    // Check if info and aggregatedDiscountInfoV3 exist
+    const discountInfo = resData?.info?.aggregatedDiscountInfoV3;
+
+  
+    return (
+      <div>
+        {/* Conditional rendering based on the existence of discountInfo */}
+        {discountInfo ? (
+          <label className="bg-slate-950 text-white m-2 p-2 absolute rounded-lg">
+            {discountInfo.header+ " "+ discountInfo.subHeader}
+          </label>
+        ) : null}
+        {/* Render the passed-in RestaurantCard component */}
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
+
 
 export default RestaurantCard;// this is called a default export, each file have only one default export and we cannot pass multiple default export, if we want export to export multiple component or reactelement means we can use named component.

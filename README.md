@@ -102,3 +102,14 @@
 ->material UI
 ->chakra UI
 ->tailwind css
+
+# higher order component is a function, that get input as a function, and then enhance the function return as a component.
+
+# we download react development tool extension in chrome, to see the UI and data in component tab and profiler tab is provide us recording thing, to record our application action, to see "how much time to render the component and update the UI".
+
+# control component -> it is a component which is control by itself, not parent component.
+# uncontrol component -> it is not control by itself but it can control by parenet component.
+
+# Lifting State Up-> lifting the children component based on parent component using index.
+
+# Context provides a way to pass data through the component tree without having to pass props down manually at every level."Advantage"-> to solve the props drilling.

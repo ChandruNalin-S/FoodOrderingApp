@@ -1,8 +1,9 @@
-import RestaurantCard from "./RestaurantCard";
-import { useEffect, useState } from "react";
+import RestaurantCard ,{displayOfferLabel} from "./RestaurantCard";
+import { useEffect, useState, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "./UserContext";
 
 
 
@@ -14,6 +15,9 @@ const Body = ()=>{
 
   const [FilterRestaurants, setFilterRestaurants] = useState([]);
 
+  //console.log(ListOfRestaurants[0]?.info?.aggregatedDiscountInfoV3?.header,ListOfRestaurants[0]?.info?.aggregatedDiscountInfoV3?.subHeader)
+
+  const RestaurantCardOffered = displayOfferLabel(RestaurantCard); // it is a higher order component and return a enhance component and stored in RestaurantCardOffered.
 
   const[searchText,setSearchText] = useState("");
 
@@ -60,6 +64,8 @@ const Body = ()=>{
   }
   */
 
+  const {loggedUser,setUserName} = useContext(UserContext); 
+
   return ListOfRestaurants.length === 0? <Shimmer />: (// this line is known as ternary operatorin javascript.
     <div className="body-container">
       <div className="top-rating-container flex m-5">
@@ -78,7 +84,6 @@ const Body = ()=>{
           }}>search</button>
         </div>
 
-
         <button className="bg-black text-white px-2 rounded-lg" onClick={()=>{
            const FilterRestaurants = ListOfRestaurants.filter((res)=>{
               return res.info.avgRating > 4;
@@ -87,12 +92,20 @@ const Body = ()=>{
           setFilterRestaurants(FilterRestaurants);
 
         }}>Top Rating</button>
+
+        <div className="ml-4 text-center ">
+          <label>UserName: </label>
+          <input className="border border-black rounded-sm py-1 px-2" value={loggedUser} onChange={(e)=>setUserName(e.target.value)}/>
+        </div>
       </div>
       <div className="flex flex-wrap">
         {// javascript only written in inside the curly bracket
 
         FilterRestaurants.map((restaurant)=>{
-          return <Link className="res-details-container-link" key={restaurant.info.id}  to={"/restaurants/"+restaurant.info.id}><RestaurantCard  resData = {restaurant} /></Link>// whenever we looping array object,then we have to pass unique key props and why we put key inside the Link component not in RestaurantCard component, because now RestaurantCard component inside the Link component so it is parent component on top of it, that's why key is inside the Link component.
+          return <Link className="res-details-container-link" key={restaurant.info.id}  to={"/restaurants/"+restaurant.info.id}>
+            {/*console.log(restaurant?.info?.aggregatedDiscountInfoV3?.header)*/}
+            {restaurant?.info?.aggregatedDiscountInfoV3?.header && restaurant?.info?.aggregatedDiscountInfoV3?.subHeader ?  (<RestaurantCardOffered  resData = {restaurant} /> ):
+             (<RestaurantCard resData = {restaurant} />) }</Link>// whenever we looping array object,then we have to pass unique key props and why we put key inside the Link component not in RestaurantCard component, because now RestaurantCard component inside the Link component so it is parent component on top of it, that's why key is inside the Link component.
         })
 
         }

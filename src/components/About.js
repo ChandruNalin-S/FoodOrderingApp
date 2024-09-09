@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import UserClass from './UserClass';
+import UserContext from './UserContext';
 
 
 class About extends Component{
@@ -7,18 +8,25 @@ class About extends Component{
     super(props);
 
 
-    console.log("Parent constructor");
+    //console.log("Parent constructor");
   }
 
   componentDidMount(){// it is just work as a useEffect function/hook in functional component.
-    console.log("Parent did mount");
+    //console.log("Parent did mount");
   }
 
   render(){
-    console.log("Parent render");
+    //console.log("Parent render");
     return(
       <div>
       <h2>About Class Component</h2>
+      <div>
+        <UserContext.Consumer>
+          {
+            (data)=><h2 className='font-bold text-lg'>{data.loggedUser}</h2>
+          }
+        </UserContext.Consumer>
+      </div>
       <h3>this is online site use to buy foods</h3>
       <UserClass name="first (class)" location = "Chennai"/>
     </div>
