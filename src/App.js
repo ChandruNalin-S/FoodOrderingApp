@@ -8,6 +8,9 @@ import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter , RouterProvider ,Outlet } from "react-router-dom";
 import UserContext from "./components/UserContext";
+import { Provider } from "react-redux"; 
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 //import Grocery from "./components/Grocery";
 /*
 component -> to build this site
@@ -64,14 +67,17 @@ const AppLayout = ()=>{
     setUserName(data.name);
   },[]);
 
+  // <provider/> component is come from react-redux library, which support to connect react app to redux store.
 
   return (
-    <UserContext.Provider value={{loggedUser:userName,setUserName}}>{/*UserContext.Provider is a component and provide context to everywhere in the application, when the context is called.*/}
-      <div className="app">
-        <Header />
-        <Outlet />{/* Outlet is a component which is provided by react-router-dom, through this we can nav to children route, whenever we give a path, it will automatically understand and move to different children route */}
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{loggedUser:userName,setUserName}}>{/*UserContext.Provider is a component and provide context to everywhere in the application, when the context is called.*/}
+        <div className="app">
+          <Header />
+          <Outlet />{/* Outlet is a component which is provided by react-router-dom, through this we can nav to children route, whenever we give a path, it will automatically understand and move to different children route */}
+        </div>
+      </UserContext.Provider>
+    </Provider>
   )
 };
 
@@ -99,6 +105,10 @@ const appRouter = createBrowserRouter([
       {
         path:"/restaurants/:resId",
         element:<RestaurantMenu />
+      },
+      {
+        path:"/cart",
+        element:<Cart />
       }
     ],
     errorElement:<Error />

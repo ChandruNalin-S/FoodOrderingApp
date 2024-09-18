@@ -113,3 +113,31 @@
 # Lifting State Up-> lifting the children component based on parent component using index.
 
 # Context provides a way to pass data through the component tree without having to pass props down manually at every level."Advantage"-> to solve the props drilling.
+
+
+# REDUX toolkit is a external libraries and it is used for state management or data management, it work likes a context in react but redux is most popular library for developing web application to manage state or data. 
+
+# Redux toolkit have oun store called Redux Store, it is a global centeralize and larger object that contains data, to share common data any component in the application.
+
+# Opertion in Redux store is!
+  -> Write
+  -> Read
+
+  # Write opertion(storing data) process, for example add to cart
+      -> when user click the add button,it dispatch the action to call reducer function and the reducer function is use to update or store the data in redux store.
+      -> Each data is stored like slice because Redux store which contains of slice, so the add to cart data is store in cart slice of the redux store.
+
+  # Read opertion(display data) process, for example add to cart
+      ->after storing the data in redux store, if user wants to see the cart data , then there is a selector which use to connect the cart slice to cart button, if the cart slice is updated then the cart button will automatically updated because the cart button and cart slice in redux store is "subscribed to the store".
+
+
+# Earlier, In redux(vanilla redux) we cannot mutate/change the state directly inside the redux-store, instead we have create copy of the state and after the update return the newstate to the original state, now a days in redux-toolkit we can update state or we have to update the state in the store but behind the code still vanilla redux work flow is working. 
+
+# there was a libraries whose working behind the redux-toolkit is immer, which is helpful to compare the older state with new updated state and then return updated state.
+
+
+# "We are download redux dev tool in chrome extension" which will helpful for debugging code and find the error. also live the process of redux-store modification/updating.
+
+# note: In previous redux, they were use redux middleware and thunk,which is used for storing API data inside in  the redux-store that's why they were used middleware and thunk.
+
+# To overcome this middleware and thunk, redux developer created a query called redux quick query which is used for handling the fetch API data and storing in the redux-store.

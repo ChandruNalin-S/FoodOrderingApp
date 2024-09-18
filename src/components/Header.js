@@ -2,6 +2,7 @@ import { useState , useEffect, useContext } from "react";
 import { LOG_URL } from "../utils/constants";
 import { Link} from "react-router-dom";// Link is a component provided by react-router-dom, purpose to link instead of <a></a>, because this link component won't reload the page, when move to another page or component and it is very fast render the page.
 import UserContext from "./UserContext";
+import { useSelector } from "react-redux";
 
 
 const Header = ()=>{
@@ -11,6 +12,10 @@ const Header = ()=>{
   console.log("header-render");
 
   const {loggedUser} = useContext(UserContext);// to use the Context we can use the useContext hook to get the data which is inside the CreateContext.
+
+  const cartItems = useSelector((store)=> store.cart.items);//hooks 
+
+  console.log(cartItems);
 
 
   // if no dependency array => useEffect is called on every render.
@@ -39,7 +44,10 @@ const Header = ()=>{
           <li className="px-4">
             <Link className="nav-items-link" to="/Grocery">Grocery</Link>
           </li>
-          <li className="px-4">Cart</li>
+          <li className="px-4 text-xl font-bold">
+          <Link className="nav-items-link" to="/cart">Cart ({cartItems.length} items)</Link>
+            
+          </li>
           <li>
             <button className="button" onClick={()=>{
               btnNameReact === "login"? SetbtnNameReact("logout"): SetbtnNameReact("login");
