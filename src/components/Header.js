@@ -15,7 +15,7 @@ const Header = ()=>{
 
   const cartItems = useSelector((store)=> store.cart.items);//hooks 
 
-  console.log(cartItems);
+  //console.log(cartItems);
 
 
   // if no dependency array => useEffect is called on every render.

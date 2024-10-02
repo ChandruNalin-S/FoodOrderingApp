@@ -1,4 +1,4 @@
-import RestaurantCard ,{displayOfferLabel} from "./RestaurantCard";
+import RestaurantCard ,{DisplayOfferLabel} from "./RestaurantCard";
 import { useEffect, useState, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -17,7 +17,7 @@ const Body = ()=>{
 
   //console.log(ListOfRestaurants[0]?.info?.aggregatedDiscountInfoV3?.header,ListOfRestaurants[0]?.info?.aggregatedDiscountInfoV3?.subHeader)
 
-  const RestaurantCardOffered = displayOfferLabel(RestaurantCard); // it is a higher order component and return a enhance component and stored in RestaurantCardOffered.
+  const RestaurantCardOffered = DisplayOfferLabel(RestaurantCard); // it is a higher order component and return a enhance component and stored in RestaurantCardOffered.
 
   const[searchText,setSearchText] = useState("");
 
@@ -26,9 +26,11 @@ const Body = ()=>{
 
   useEffect(()=>{// it always take two parameter one is function to execute and another one is destructing.
     
+    /*
     timer = setInterval(()=>{// for checking like, the useEffect() is running after moving to another page.it will running, to stop have to return some function to stop.
       console.log("the useEffect is running");
     },1000);
+    */
 
   
     if(Status=== true){
@@ -38,9 +40,10 @@ const Body = ()=>{
       return <h1>your connection is poor</h1>
     }
 
+    /*
     return ()=>{
       clearInterval(timer);
-    }
+    }*/
   },[]);// in dependency array we can pass more state variable and even one state variable is also update then useeffect is called.
 
   const fetchData = async ()=>{
@@ -70,7 +73,7 @@ const Body = ()=>{
     <div className="body-container">
       <div className="top-rating-container flex m-5">
         <div>
-          <input text="text" className="border border-solid border-black mr-2 py-1 px-1 " value={searchText} onChange={(e)=>{
+          <input text="text" data-testid="searchInput" className="border border-solid border-black mr-2 py-1 px-1 " value={searchText} onChange={(e)=>{
               setSearchText(e.target.value);
           }}/>
           <button className="bg-red-500 text-white px-3 py-1 mr-2 rounded-lg" onClick={()=>{

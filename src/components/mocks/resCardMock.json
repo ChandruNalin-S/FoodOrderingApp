@@ -1,0 +1,94 @@
+{
+  "info": {
+      "id": "453068",
+      "name": "Chinese Wok",
+      "cloudinaryImageId": "e0839ff574213e6f35b3899ebf1fc597",
+      "locality": "Express Avenue",
+      "areaName": "Royapettah",
+      "costForTwo": "₹250 for two",
+      "cuisines": [
+          "Chinese",
+          "Asian",
+          "Tibetan",
+          "Desserts"
+      ],
+      "avgRating": 4.3,
+      "parentId": "61955",
+      "avgRatingString": "4.3",
+      "totalRatingsString": "2.1K+",
+      "sla": {
+          "deliveryTime": 46,
+          "lastMileTravel": 3.9,
+          "serviceability": "SERVICEABLE",
+          "slaString": "45-50 mins",
+          "lastMileTravelString": "3.9 km",
+          "iconType": "ICON_TYPE_EMPTY"
+      },
+      "availability": {
+          "nextCloseTime": "2024-09-24 22:00:00",
+          "opened": true
+      },
+      "badges": {
+          "imageBadges": [
+              {
+                  "imageId": "Green%20Dot%20Awards/Best%20In%20Veg%20Noodles.png",
+                  "description": "Delivery!"
+              }
+          ]
+      },
+      "isOpen": true,
+      "type": "F",
+      "badgesV2": {
+          "entityBadges": {
+              "imageBased": {
+                  "badgeObject": [
+                      {
+                          "attributes": {
+                              "description": "Delivery!",
+                              "imageId": "Green%20Dot%20Awards/Best%20In%20Veg%20Noodles.png"
+                          }
+                      }
+                  ]
+              },
+              "textBased": {},
+              "textExtendedBadges": {}
+          }
+      },
+      "aggregatedDiscountInfoV3": {
+          "header": "ITEMS",
+          "subHeader": "AT ₹149"
+      },
+      "orderabilityCommunication": {
+          "title": {},
+          "subTitle": {},
+          "message": {},
+          "customIcon": {}
+      },
+      "differentiatedUi": {
+          "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+          "differentiatedUiMediaDetails": {
+              "mediaType": "ADS_MEDIA_ENUM_IMAGE",
+              "lottie": {},
+              "video": {}
+          }
+      },
+      "reviewsSummary": {},
+      "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+      "restaurantOfferPresentationInfo": {},
+      "externalRatings": {
+          "aggregatedRating": {
+              "rating": "--"
+          }
+      },
+      "ratingsDisplayPreference": "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY"
+  },
+  "analytics": {
+      "context": "seo-data-84f3b190-8a19-42ab-8372-c96c705c63c5"
+  },
+  "cta": {
+      "link": "https://www.swiggy.com/city/chennai/chinese-wok-express-avenue-royapettah-rest453068",
+      "text": "RESTAURANT_MENU",
+      "type": "WEBLINK"
+  },
+  "widgetId": "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo"
+}

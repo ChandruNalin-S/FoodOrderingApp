@@ -7,6 +7,7 @@ const RestaurantCard = (props)=>{ {/* props is a object, which is stored the arg
   //console.log(props);
   //const {resName,cuisine} =props;// this shortcut is called destructing the object using javascript.
   const {resData} =  props;
+  //console.log(resData);
   const {cloudinaryImageId,name,cuisines,avgRating,costForTwo} = resData?.info;// destructing and "?" it denotes that optional chaining. 
 
   const {loggedUser} = useContext(UserContext);
@@ -14,7 +15,7 @@ const RestaurantCard = (props)=>{ {/* props is a object, which is stored the arg
 
   const {deliveryTime} = resData?.info.sla;
   return (
-    <div className="m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200">
+    <div data-testid="resCard" className="m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200">
       <img className="rounded-lg" alt="meghana Foods" src={CDN_URL+cloudinaryImageId}/>
       <h3 className="font-bold text-lg py-3">{name}</h3>
       <h4>{cuisines.join(", ")}</h4>
@@ -29,7 +30,7 @@ const RestaurantCard = (props)=>{ {/* props is a object, which is stored the arg
 
 
 // this is called a higher order component, it get a input component, enhance the component/function and return as component.
-export const displayOfferLabel = (RestaurantCard) => {
+export const DisplayOfferLabel = (RestaurantCard) => {
   return (props) => {
     // Destructure info from props
     //console.log(props.resData.info)
